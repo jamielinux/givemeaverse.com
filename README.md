@@ -53,7 +53,7 @@ It is licensed under the [Mozilla Public License 2.0](LICENSE).
 
 ## Third-party bugs found during development
 
-Found and reported two bugs:
+Found and reported three bugs:
 
 - WebKit: [Using vmax for select \<option\> font-size adds a noticeable delay to all
   future interactive events](https://bugs.webkit.org/show_bug.cgi?id=210714)
