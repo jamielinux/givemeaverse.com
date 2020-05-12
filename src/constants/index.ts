@@ -1,0 +1,17 @@
+/* SPDX-License-Identifier: MPL-2.0 */
+
+/* Copyright © 2020 Jamie Nguyen
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+export const RANDOM_VERSE_PATHNAME = '/random';
+export const NUM_VERSE_COLORS = 21;
+export const LONGEST_VERSE = 387;
+export const DEFAULT_TRANSLATION = 'niv';
+export const DEFAULT_VERSE_FONT = 'sans-serif';
+export const DEFAULT_THEME = 'light';
+export const SUPPORTED_TRANSLATIONS = ['esv', 'kjv', 'niv'];
+export const SUPPORTED_VERSE_FONTS = ['sans-serif', 'serif'];
+export const SUPPORTED_THEMES = ['light', 'dark'];
+export const SUPPORTED_SLIDESHOW_INTERVALS = ['-1', '10', '30', '60', '120'];

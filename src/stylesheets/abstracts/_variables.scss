@@ -1,0 +1,81 @@
+/* SPDX-License-Identifier: MPL-2.0 */
+
+/* Copyright © 2020 Jamie Nguyen
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+$background-image: "../../media/mountain-bg.svg";
+
+/* In comments are two sets of contrast ratios.
+ *
+ * The first is the ratio against the color used for the verse text:
+ *  light theme: --color-fg-contrast: #000000
+ *  dark theme:  --color-fg-contrast: #ffffff
+ *
+ * The second is the ratio against the color used for the reference text:
+ *  light theme: --color-mid-fg: #2e2e2e
+ *  dark theme:  --color-mid-fg: #d9d9d9
+ *
+ * All color combinations must meet the WCAG 2.0 Level AAA requirements,
+ * though in fact instead of a 7:1 minimum I've opted for a 12:1 minimum
+ * for the main verse text to far exceed the guidelines.
+ *
+ * Web Content Accessibility Guidelines (WCAG) 2.0
+ *  Level AA
+ *  - Contrast ratio >= 4.5:1 for normal text.
+ *  - Contrast ratio >= 3:1   for large text.
+ *  Level AAA
+ *  - Contrast ratio >= 7:1   for normal text.
+ *  - Contrast ratio >= 4.5:1 for large text.
+ */
+
+// prettier-ignore
+$verse-card-colors-light:
+            //  Verse     Reference
+  #bfd7ea,  //  14.12:1   9.13:1
+  #88cdf2,  //  12.06:1   7.79:1
+  #8dcee7,  //  12.11:1   7.83:1
+  #9acdda,  //  12.11:1   7.83:1
+  #a1cdf4,  //  12.55:1   8.11:1
+  #a8dadc,  //  13.72:1   8.87:1
+  #a8c8e1,  //  12.01:1   7.76:1
+  #a8cdbb,  //  12.11:1   7.83:1
+  #9ed1b2,  //  12.21:1    7.9:1
+  #a8cea1,  //   12.1:1   7.76:1
+  #fec3a6,  //  13.57:1   8.77:1
+  #ffcf8c,  //  14.55:1   9.41:1
+  #efd780,  //   14.7:1    9.5:1
+  #eecfd4,  //  14.51:1   9.38:1
+  #eab8b8,  //  12.04:1   7.79:1
+  #debacd,  //  12.01:1   7.18:1
+  #fcb5b5,  //  12.41:1   7.76:1
+  #d4c0d8,  //  12.33:1   7.97:1
+  #ddbbd0,  //  12.09:1   7.82:1
+  #c0c4dd,  //  12.18:1   7.87:1
+  #b4c5e9;  //   12.1:1   7.82:1
+
+// prettier-ignore
+$verse-card-colors-dark:
+            //  Verse     Reference
+  #003459,  //  12.84:1    9.09:1
+  #4b2142,  //  13.16:1    9.32:1
+  #273043,  //   13.2:1    9.35:1
+  #222e50,  //  13.33:1    9.44:1
+  #481b34,  //  14.17:1   10.03:1
+  #073846,  //  12.62:1    8.94:1
+  #3d3149,  //  12.11:1    8.58:1
+  #063b47,  //  12.17:1    8.62:1
+  #1e3836,  //  12.54:1    8.88:1
+  #2e294e,  //   13.6:1    9.63:1
+  #13262f,  //   15.6:1   11.05:1
+  #412f40,  //  12.31:1    8.72:1
+  #193461,  //  12.31:1    8.72:1
+  #14213d,  //  15.97:1   11.31:1
+  #4d2222,  //  13.39:1    9.49:1
+  #142f45,  //  13.79:1    9.77:1
+  #410f0f,  //  16.15:1   11.44:1
+  #093a3a,  //  12.51:1    8.86:1
+  #492c33,  //  12.41:1    8.79:1
+  #203c2b,  //  12.05:1    8.53:1
+  #03312e;  //  14.16:1   10.03:1

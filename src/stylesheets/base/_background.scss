@@ -1,0 +1,31 @@
+/* SPDX-License-Identifier: MPL-2.0 */
+
+/* Copyright © 2020 Jamie Nguyen
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+.background--home, .background--contact {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background: transparent url("#{$background-image}") no-repeat;
+  background-position: bottom 0 right 0;
+  background-attachment: fixed;
+  background-size: 100vmin;
+}
+
+@media screen and (max-height: 500px) {
+  .background--home {
+    background: transparent;
+  }
+}
+
+@media screen and (max-height: 800px) {
+  .background--contact {
+    background: transparent;
+  }
+}

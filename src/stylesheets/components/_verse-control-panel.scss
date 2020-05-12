@@ -1,0 +1,266 @@
+/* SPDX-License-Identifier: MPL-2.0 */
+
+/* Copyright © 2020 Jamie Nguyen
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+.verse__control-panel {
+  flex-shrink: 0;
+  min-width: 250px;
+  margin: 15px 0;
+}
+
+.verse__translations,
+.verse__icons {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+}
+
+.verse__translation,
+.verse__icon {
+  font-size: calc(1.8rem + 0.2vmax);
+  width: calc(80px + 0.6vmax);
+  height: calc(60px + 0.2vmax);
+  color: var(--color-mid);
+}
+
+.verse__translation {
+  position: relative;
+}
+
+.verse__translation:not(.verse__translation--is-active) {
+  @include attention-if-can-hover {
+    cursor: pointer;
+    color: var(--color-fg);
+    transition: 0.3s;
+
+    &::before {
+      content: "";
+      position: absolute;
+      height: 3px;
+      width: 46%;
+      top: 3rem;
+      left: 27%;
+      background-color: var(--color-mid);
+    }
+  }
+}
+
+.verse__translation--is-active {
+  position: relative;
+  pointer-events: none;
+  color: var(--color-mid-fg);
+
+  &::before {
+    content: "";
+    position: absolute;
+    height: 3px;
+    width: 46%;
+    top: 3rem;
+    left: 27%;
+    background-color: var(--color-mid);
+  }
+}
+
+.verse__icon {
+  @include attention-if-can-hover {
+    cursor: pointer;
+
+    .svg__fgpath {
+      fill: var(--color-fg);
+      transition: 0.3s;
+    }
+  }
+}
+
+$i: 0;
+@each $color in $verse-card-colors-light {
+  .verse__icon--is-active--light-#{$i} {
+    .svg__fgpath {
+      fill: var(--color-versecard-#{$i});
+    }
+  }
+  $i: $i + 1;
+}
+
+$i: 0;
+@each $color in $verse-card-colors-dark {
+  .verse__icon--is-active--dark-#{$i} {
+    filter: brightness(225%);
+    .svg__fgpath {
+      fill: var(--color-versecard-#{$i});
+    }
+  }
+  $i: $i + 1;
+}
+
+$verse-popups: settings, slideshow, info;
+@each $popup in $verse-popups {
+  $base-size: calc(290px + 4vmax);
+  $border-width: 5px;
+  $header-height: 60px;
+  $content-height: calc(#{$base-size} - (2 * #{$header-height}));
+
+  ##{$popup} {
+    position: fixed;
+    width: $base-size;
+    border: $border-width solid var(--color-mid-bg);
+    top: 50%;
+    left: 50%;
+    height: $base-size;
+    margin-top: calc((#{$base-size} + (2 * #{$border-width})) / -2);
+    margin-left: calc((#{$base-size} + (2 * #{$border-width})) / -2);
+    background: var(--color-bg);
+    z-index: 500;
+    opacity: 0;
+    visibility: hidden;
+    transition: none;
+  }
+
+  .#{$popup}__header {
+    height: $header-height;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .#{$popup}__close-icon-wrapper {
+    height: $header-height;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .#{$popup}__close-icon {
+    height: $header-height;
+    width: $header-height;
+
+    .svg-close {
+      position: absolute;
+      height: 26px;
+      width: 26px;
+      top: 18px;
+      right: 18px;
+    }
+
+    &:focus {
+      .svg-close {
+        outline: 1px dotted black;
+      }
+    }
+
+    @include attention {
+      cursor: pointer;
+      transition: all 0.3s;
+      outline: none;
+
+      .svg-close__path {
+        fill: var(--color-fg);
+      }
+    }
+  }
+
+  .#{$popup}__content {
+    height: $content-height;
+    margin-top: 10px;
+    padding: 0 #{$header-height} #{$header-height};
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .#{$popup}__item {
+    flex-grow: 1;
+  }
+
+  .#{$popup}__label {
+    display: block;
+    font-weight: normal;
+    font-size: 2rem;
+    margin-bottom: calc(1.2rem + 0.2vmax);
+    font-family: var(--font-brand);
+    color: var(--color-brand-accessible);
+  }
+
+  .#{$popup}--is-active {
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}
+
+.settings__content,
+.slideshow__content {
+  text-align: center;
+}
+
+.settings__select,
+.slideshow__select {
+  min-width: 160px;
+  appearance: none;
+  border: 1px solid var(--color-mid-bg);
+  padding: 8px;
+  height: 4rem;
+  color: var(--color-fg);
+  background-color: var(--color-bg);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-bottom: 3rem;
+  font-size: 1.6rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.settings__select-wrapper,
+.slideshow__select-wrapper {
+  position: relative;
+  margin-top: calc(1.2rem + 0.2vmax);
+
+  .svg-expand {
+    pointer-events: none;
+    position: absolute;
+    right: calc(8px + 2vmax);
+    top: 7px;
+  }
+}
+
+.info__content {
+  padding: 0 calc(10px + 1vmax) 0;
+
+  ul {
+    margin: 0;
+    padding: calc(1vmax - 10px) 20px 0 45px;
+  }
+
+  .svg-settings,
+  .svg-slideshow {
+    position: absolute;
+    top: -0.1rem;
+    left: -40px;
+  }
+}
+
+.info__heading {
+  text-align: center;
+  font-weight: normal;
+  font-size: calc(2rem + 0.2vmax);
+  margin: 2rem 0 calc(2rem + 1vmax) 0;
+  font-family: var(--font-brand);
+  color: var(--color-brand-accessible);
+}
+
+.info__item {
+  display: block;
+  margin-bottom: calc(2rem + 1vmax);
+}
+
+.info__row {
+  position: relative;
+}

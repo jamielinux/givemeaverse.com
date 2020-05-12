@@ -1,0 +1,84 @@
+{
+    "name": "givemeaverse.com",
+    "version": "1.0.0",
+    "license": "MPL-2.0",
+    "private": true,
+    "dependencies": {
+        "history": "^4.10.1",
+        "prop-types": "^15.7.2",
+        "query-string": "^6.12.1",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "react-helmet": "^6.0.0",
+        "react-router-dom": "^5.1.2"
+    },
+    "devDependencies": {
+        "@testing-library/dom": ">=5",
+        "@testing-library/jest-dom": "^4.2.4",
+        "@testing-library/react": "^9.5.0",
+        "@testing-library/user-event": "^7.2.1",
+        "@types/history": "^4.7.5",
+        "@types/jest": "^25.2.1",
+        "@types/react": "^16.9.34",
+        "@types/react-dom": "^16.9.7",
+        "@types/react-helmet": "^5.0.15",
+        "@types/react-router": "^5.1.7",
+        "@types/react-router-dom": "^5.1.5",
+        "@typescript-eslint/eslint-plugin": "^2.31.0",
+        "@typescript-eslint/parser": "^2.31.0",
+        "eslint": "^6.8.0",
+        "eslint-config-airbnb": "^18.1.0",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-plugin-import": "^2.20.2",
+        "eslint-plugin-jest": "^23.8.2",
+        "eslint-plugin-jsx-a11y": "^6.2.3",
+        "eslint-plugin-prettier": "^3.1.3",
+        "eslint-plugin-react": "^7.19.0",
+        "eslint-plugin-react-hooks": "^2.5.1",
+        "node-sass": "^4.14.0",
+        "prettier": "^2.0.5",
+        "react-scripts": "3.4.1",
+        "react-test-renderer": "^16.13.1",
+        "ts-node": "^8.10.1",
+        "typescript": "^3.7.5"
+    },
+    "scripts": {
+        "build": "react-scripts build",
+        "coverage": "react-scripts test --verbose --coverage --watchAll=false",
+        "eject": "react-scripts eject",
+        "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+        "verse-sort": "ts-node -O '{\"module\":\"commonjs\"}' src/scripts/sortVerseData.ts",
+        "verse-stats": "ts-node -O '{\"module\":\"commonjs\"}' src/scripts/verseStatistics.ts",
+        "start": "react-scripts start",
+        "test": "react-scripts test --verbose"
+    },
+    "jest": {
+        "collectCoverageFrom": [
+            "src/**/*.js",
+            "src/**/*.jsx",
+            "src/**/*.ts",
+            "src/**/*.tsx",
+            "!src/index.tsx",
+            "!src/react-app-env.d.ts",
+            "!src/serviceWorker.ts",
+            "!src/data/*",
+            "!src/scripts/*"
+        ]
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all",
+            "not IE 11"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
+}

@@ -1,0 +1,104 @@
+/* SPDX-License-Identifier: MPL-2.0 */
+
+/* Copyright © 2020 Jamie Nguyen
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+#content {
+  height: 100%;
+}
+
+.content--is-inactive {
+  pointer-events: none;
+  filter: blur(3px) opacity(30%);
+  transition: all 0.2s linear;
+}
+
+.verse {
+  min-height: calc(100% - var(--header-height) - var(--header-margin-bottom));
+  display: flex;
+  flex-direction: column;
+
+  .give-me-a-verse {
+    margin-bottom: calc(25px + 4.5vh);
+  }
+
+  .give-me-a-verse__button {
+    width: calc(190px + 1.5vmax);
+    height: calc(50px + 0.4vmax);
+
+    &:active {
+      background: var(--color-mid-bg);
+    }
+  }
+}
+
+.verse__outer {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.verse__inner {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.verse__card {
+  width: 65%;
+  min-width: 210px;
+  max-width: 800px;
+  text-align: center;
+  border: calc(5px + 0.25vmax) solid var(--color-versecard-border);
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+$i: 0;
+@each $color in $verse-card-colors-light {
+  .verse__card--light-#{$i} {
+    background: var(--color-versecard-#{$i});
+  }
+  $i: $i + 1;
+}
+
+$i: 0;
+@each $color in $verse-card-colors-dark {
+  .verse__card--dark-#{$i} {
+    background: var(--color-versecard-#{$i});
+  }
+  $i: $i + 1;
+}
+
+.verse__text {
+  --font-size: calc(1.15rem + 0.65vmax);
+  --font-size-adjustment: 0px;
+  padding: 0;
+  margin: 0 0 calc(1rem + 1.5vmax);
+  font-size: calc(var(--font-size) + var(--font-size-adjustment));
+  line-height: calc(120% + 0.7vmax);
+  color: var(--color-fg-contrast);
+}
+
+.verse__text--sans-serif {
+  font-family: var(--font-sans-serif);
+}
+
+.verse__text--serif {
+  font-family: var(--font-serif);
+}
+
+.verse__reference {
+  font-size: calc(1.25rem + 0.45vmax);
+  color: var(--color-mid-fg);
+  font-style: normal;
+}
+
+.small-caps {
+  font-feature-settings: "smcp" on;
+}

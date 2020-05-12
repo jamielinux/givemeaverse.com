@@ -1,0 +1,26 @@
+/* SPDX-License-Identifier: MPL-2.0 */
+
+/* Copyright © 2020 Jamie Nguyen
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+@mixin attention {
+  &:hover,
+  &:active,
+  &:focus {
+    @content;
+  }
+}
+
+// https://bugs.chromium.org/p/chromium/issues/detail?id=1072212
+// Chrome on Wayland reports itself as having no pointer or ability to hover.
+// For now, match (pointer: none) as well.
+@mixin attention-if-can-hover {
+  @at-root @media screen and (any-hover: hover),
+    screen and (pointer: none) {
+    @include attention {
+      @content;
+    }
+  }
+}

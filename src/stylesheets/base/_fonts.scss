@@ -1,0 +1,48 @@
+/* SPDX-License-Identifier: MPL-2.0 */
+
+/* Copyright © 2020 Jamie Nguyen
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+// SSansPro and SSerifPro have been manually subsetted from the original
+// OTF files using FontForge. The Google Fonts versions don't include small
+// caps, which we need to style the word LORD properly.
+
+@font-face {
+  font-family: "FSans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("../../media/FSans-Regular.woff2") format("woff2"),
+    url("../../media/FSans-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "SSansPro";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("../../media/SSansPro-Regular.woff2") format("woff2"),
+    url("../../media/SSansPro-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "SSerifPro";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("../../media/SSerifPro-Regular.woff2") format("woff2"),
+    url("../../media/SSerifPro-Regular.woff") format("woff");
+}
+
+// Only used for the headings on the About and Contact pages.
+@font-face {
+  font-family: "Source Serif Pro";
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: local("Source Serif Pro Bold"), local("SourceSerifPro-Bold"),
+    url("../../media/SourceSerifPro-Bold.woff2") format("woff2"),
+    url("../../media/SourceSerifPro-Bold.woff") format("woff");
+}

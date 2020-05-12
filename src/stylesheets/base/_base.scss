@@ -1,0 +1,106 @@
+/*! SPDX-License-Identifier: MPL-2.0 */
+
+/*! Copyright © 2020 Jamie Nguyen
+/*  This Source Code Form is subject to the terms of the Mozilla Public
+ *  License, v. 2.0. If a copy of the MPL was not distributed with this
+ *  file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+html {
+  --font-sans-serif: SSansPro, "Source Sans Pro", Roboto, Lato, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-serif: SSerifPro, "Source Serif Pro", "Noto Serif", "PT Serif",
+    "Droid Serif", Cambria, Caladea, "Liberation Serif", FreeSerif, serif;
+  --font-brand: FSans, "Fira Sans", var(--font-sans-serif);
+  --header-height: calc(30px + 6.5vh);
+  --header-min-height: 50px;
+  --header-icon-height: calc(20px + 0.8vh);
+  --header-margin-sides: calc(20px + 0.8vw);
+  --header-margin-bottom: 10px;
+}
+
+html.html--light-theme {
+  --color-brand: #a5243d;
+  --color-brand-rgb: 165, 36, 54;
+  --color-brand-accessible: var(--color-brand);
+  --color-bg: #ffffff;
+  --color-bg-tint: #fafafa;
+  --color-fg: #1e1e1e;
+  --color-fg-contrast: #000000;
+  --color-mid: #757575;
+  --color-mid-contrast: #545454;
+  --color-mid-bg: #d9d9d9;
+  --color-mid-fg: #2e2e2e;
+  --color-nav: var(--color-fg);
+  --color-black: #1e1e1e;
+  --color-white: #ffffff;
+  --color-versecard-border: hsla(0, 0%, 100%, 0.5);
+
+  $i: 0;
+  @each $color in $verse-card-colors-light {
+    --color-versecard-#{$i}: #{$color};
+    $i: $i + 1;
+  }
+}
+
+html.html--dark-theme {
+  --color-brand: #a5243d;
+  --color-brand-rgb: 165, 36, 54;
+  --color-brand-accessible: #d66176;
+  --color-bg: #161616;
+  --color-bg-tint: #161616;
+  --color-fg: #f4f4f4;
+  --color-fg-contrast: #ffffff;
+  --color-mid: #939393;
+  --color-mid-contrast: #b3b3b3;
+  --color-mid-bg: #414141;
+  --color-mid-fg: #d9d9d9;
+  --color-black: #1e1e1e;
+  --color-white: #ffffff;
+  --color-versecard-border: hsla(0, 0%, 100%, 0.2);
+
+  $i: 0;
+  @each $color in $verse-card-colors-dark {
+    --color-versecard-#{$i}: #{$color};
+    $i: $i + 1;
+  }
+}
+
+body {
+  background: var(--color-bg);
+  min-width: 310px;
+  color: var(--color-fg);
+  font-size: 1.6rem;
+  line-height: 1.5;
+  font-family: var(--font-brand);
+}
+
+.body--is-inactive {
+  pointer-events: none;
+  position: fixed;
+  overflow: hidden;
+  visibility: none;
+  width: 100%;
+}
+
+li {
+  display: inline;
+}
+
+a {
+  text-decoration: none;
+}
+
+a,
+a:visited {
+  color: var(--color-brand);
+}

@@ -1,0 +1,53 @@
+/* SPDX-License-Identifier: MPL-2.0 */
+
+/* Copyright © 2020 Jamie Nguyen
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+$pages: about, contact, page-not-found;
+@each $page in $pages {
+  .#{$page} {
+    width: 100%;
+    padding: 0;
+    min-height: 310px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 5rem;
+  }
+
+  .#{$page}__content {
+    padding-top: 2rem;
+    width: 65vw;
+    max-width: 800px;
+  }
+
+  .#{$page}__title,
+  .#{$page}__heading {
+    font-family: var(--font-serif);
+    font-weight: 700;
+  }
+
+  .#{$page}__text {
+    font-size: 1.8rem;
+    line-height: 1.5;
+  }
+
+  .#{$page}__link {
+    color: var(--color-brand-accessible);
+    transition: all 0.3s ease;
+
+    &:visited {
+      color: var(--color-brand-accessible);
+    }
+
+    @include attention {
+      opacity: 0.6;
+    }
+  }
+}
+
+.about__text {
+  padding-bottom: 3rem;
+}

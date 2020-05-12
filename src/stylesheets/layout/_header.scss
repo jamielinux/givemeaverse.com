@@ -1,0 +1,229 @@
+/* SPDX-License-Identifier: MPL-2.0 */
+
+/* Copyright © 2020 Jamie Nguyen
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+.header {
+  height: var(--header-height);
+  min-height: var(--header-min-height);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: var(--header-margin-bottom);
+}
+
+.header__logo {
+  height: var(--header-height);
+  min-height: var(--header-min-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: var(--header-margin-sides);
+
+  .svg-logo {
+    height: calc(#{var(--header-height)} / 2);
+    min-height: calc(var(--header-min-height) - 20px);
+  }
+}
+
+.header__logo--full,
+.header__logo--static,
+.header__logo--minimal {
+  height: calc(#{var(--header-height)} / 2);
+  min-height: calc(var(--header-min-height) - 20px);
+}
+
+.header__logo--full,
+.header__logo--minimal {
+  .svg-logo__textpath {
+    stroke-dasharray: 150;
+    stroke-dashoffset: 150;
+  }
+}
+
+.header__logo--full,
+.header__logo--static {
+  .svg-logo__circlepath {
+    transition: all 0.3s ease-in;
+  }
+}
+
+.header__logo--static {
+  &:hover {
+    .svg-logo__circlepath {
+      transition: all 0.5s ease-out;
+      opacity: 0;
+    }
+  }
+}
+
+.header__logo--full {
+  @keyframes handwrite {
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  .svg-logo__textpath {
+    animation-delay: 0.5s;
+    animation-direction: normal;
+    animation-name: handwrite;
+    animation-duration: 4s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+}
+
+.header__logo--minimal {
+  .svg-logo__circlepath {
+    fill: var(--color-mid-bg);
+    transition: all 0.5s ease-out;
+  }
+
+  .svg-logo__textpath {
+    stroke-dasharray: 150;
+    stroke-dashoffset: 150;
+    transition: all 0.5s ease-out;
+  }
+
+  @include attention-if-can-hover {
+    cursor: pointer;
+
+    .svg-logo__circlepath {
+      fill: var(--color-mid);
+      transition: all 2s ease-out;
+    }
+
+    .svg-logo__textpath {
+      stroke-dashoffset: 0;
+      transition: all 2s ease-out;
+    }
+  }
+}
+
+.header__menu-icon-wrapper {
+  height: var(--header-height);
+  min-height: var(--header-min-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: var(--header-margin-sides);
+}
+
+#header__menu-icon {
+  height: var(--header-icon-height);
+  width: var(--header-icon-height);
+
+  .svg-menu {
+    height: var(--header-icon-height);
+    width: var(--header-icon-height);
+  }
+
+  @include attention {
+    cursor: pointer;
+    transition: all 0.3s;
+
+    .svg-menu__path {
+      fill: var(--color-mid);
+    }
+  }
+}
+
+#nav {
+  --nav-margin-right: 30px;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  min-width: 310px;
+  background: var(--color-black) url("#{$background-image}") no-repeat;
+  background-position: bottom 0 right 0;
+  background-attachment: fixed;
+  background-size: 100vmin;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.nav__header {
+  height: var(--header-height);
+  min-height: var(--header-min-height);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.nav__close-icon-wrapper {
+  height: var(--header-height);
+  min-height: var(--header-min-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: var(--nav-margin-right);
+}
+
+.nav__close-icon {
+  height: var(--header-icon-height);
+  width: var(--header-icon-height);
+
+  .svg-close {
+    height: var(--header-icon-height);
+    width: var(--header-icon-height);
+  }
+
+  @include attention {
+    cursor: pointer;
+    transition: all 0.3s;
+
+    .svg-close__path {
+      fill: var(--color-white);
+    }
+  }
+}
+
+.nav__block {
+  height: calc(100vh - var(--header-height));
+}
+
+.nav__list {
+  padding: 0;
+  margin: 0;
+  height: calc(100vh - 130px);
+  max-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: calc(2.5rem + 0.2vmax);
+  flex-grow: 1;
+}
+
+.nav__link {
+  color: var(--color-white);
+  border-bottom: 6px solid transparent;
+  padding-bottom: 3px;
+
+  &:visited {
+    color: var(--color-white);
+  }
+
+  @include attention {
+    transition: all 0.1s;
+    border-bottom: 6px solid var(--color-brand);
+  }
+}
+
+.nav--is-active {
+  pointer-events: auto;
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+}
