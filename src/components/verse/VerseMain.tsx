@@ -12,6 +12,7 @@ import { useSlideshowContext } from 'contexts/SlideshowContext';
 import { VerseFontContextProvider } from 'contexts/VerseFontContext';
 import { TranslationContextProvider } from 'contexts/TranslationContext';
 
+import { BOOKS } from 'constants/index';
 import { unhideModal, hideModals } from 'utils/index';
 import Header from 'components/common/Header';
 import Button from 'components/common/Button';
@@ -119,7 +120,7 @@ export default function VerseMain({
 VerseMain.propTypes = {
   thisVerse: PropTypes.shape({
     id: PropTypes.string.isRequired,
-    book: PropTypes.string.isRequired,
+    book: PropTypes.oneOf(BOOKS).isRequired,
     chapter: PropTypes.number.isRequired,
     startVerse: PropTypes.number.isRequired,
     numVerses: PropTypes.number.isRequired,

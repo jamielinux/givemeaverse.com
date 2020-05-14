@@ -9,7 +9,7 @@ import React, { useEffect, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 
-import { LONGEST_VERSE } from 'constants/index';
+import { BOOKS, LONGEST_VERSE } from 'constants/index';
 import { VerseDataType } from 'data/VerseData';
 import { useThemeContext } from 'contexts/ThemeContext';
 import { useVerseFontContext } from 'contexts/VerseFontContext';
@@ -127,7 +127,7 @@ export default function VerseCard({
 VerseCard.propTypes = {
   thisVerse: PropTypes.shape({
     id: PropTypes.string.isRequired,
-    book: PropTypes.string.isRequired,
+    book: PropTypes.oneOf(BOOKS).isRequired,
     chapter: PropTypes.number.isRequired,
     startVerse: PropTypes.number.isRequired,
     numVerses: PropTypes.number.isRequired,
